@@ -9,15 +9,23 @@ namespace GradeBook
         static void Main(string[] args)
         {
             var book = new Book("Marcin's GradeBook");
-         book.AddGrade(26.2);
-            book.AddGrade(23.1);
-            book.AddGrade(90.2);
-            book.AddGrade(89.1);
+
+        while(true){
+            Console.WriteLine("Enter a grade or 'q' to quit");
+        var input = Console.ReadLine();
+        if(input == "q"){
+       break;
+        }
+         var grade = double.Parse(input);
+         book.AddGrade(grade);
+        }
         var stats = book.GetStatistics();
+
 
         Console.WriteLine($"The Highest Grade is {stats.High}");
      Console.WriteLine($"The Lowest Grade is {stats.Low}");
       Console.WriteLine($"The AVarage Grade is {stats.Avarage:N1}");
+      System.Console.WriteLine($"The letter grade is {stats.Letter}");
         }
     }
 }
