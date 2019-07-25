@@ -9,7 +9,7 @@ namespace GradeBook.Tests
         public void BookCalculatesAnAvarageGrade()
         {
             //arrange
-          var book= new Book("");
+          var book= new InMemoryBook("");
          book.AddGrade(26.2);
             book.AddGrade(23.1);
             book.AddGrade(90.2);

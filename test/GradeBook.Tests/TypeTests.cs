@@ -5,6 +5,20 @@ namespace GradeBook.Tests
 {
     public class TypeTests
     {
+        public delegate string writeLogDelegate(string logMessage);
+
+[Fact]
+public void WriteLogDelegateCanPointtoMethod()
+{
+    writeLogDelegate log;
+   log = ReturnMessage;
+   var result = log("Hello!");
+    Assert.Equal("Hello!", result);
+}
+string ReturnMessage(string message)
+{
+    return message;
+}
         [Fact]
         public void CanSetNameFromReference(){
 
@@ -15,7 +29,7 @@ Assert.Equal("new Name", book1.Name);
 
         }
 
-        private void SetName(Book book, string name)
+        private void SetName(InMemoryBook book, string name)
         {book.Name=name;
         }
 
@@ -45,9 +59,9 @@ Assert.True(Object.ReferenceEquals(book1,book2));
          
         }
 
-         Book GetBook(string name)
+         InMemoryBook GetBook(string name)
         {
-            return new Book(name);
+            return new InMemoryBook(name);
         }
     }
 }
